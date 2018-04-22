@@ -39,4 +39,20 @@ class ISBN_Test < Minitest::Test
     assert_equal("0321146530", remove_extra_characters("0-321-14653-0"))
   end
 
+  def test_account_for_x1_pass
+    assert_equal([1,4,9,16,25,36,49,64,81,10], convert_input_to_array("123456789X"))
+  end
+  def test_account_for_x2_pass
+    assert_equal([1,4,9,16,25,10], convert_input_to_array("12345X"))
+  end
+  def test_account_for_x3_pass
+    assert_equal([1,4,9,16,25,36,49,64,81,0,11,24,10], convert_input_to_array("123456789012X"))
+  end
+  def test_account_for_x_no_x_1
+    assert_equal([1,4,9,16,25,36,49,64,81,70], convert_input_to_array("1234567897"))
+  end
+  def test_account_for_x_no_x2
+    assert_equal([1,4,9,16,25,12], convert_input_to_array("123452"))
+  end
+
 end

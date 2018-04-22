@@ -27,3 +27,11 @@ def remove_extra_characters(params)
   params.delete!(" ")
   return params
 end
+
+def convert_input_to_array(params)
+  result = params.split(//).map(&:to_i).map.with_index {|value, index| value = value * (index +1)}
+  if params.downcase.include? "x"
+    result[-1] = 10
+  end
+  return result
+end
