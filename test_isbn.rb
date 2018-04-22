@@ -30,4 +30,13 @@ class ISBN_Test < Minitest::Test
   def test_isbn10_checksum_fail
     assert_equal(false, isbn10("1212121212"))
   end
+
+  def test_remove_extra_characters_spaces
+    assert_equal("0321146530", remove_extra_characters("0 321 14653 0"))
+  end
+
+  def test_remove_extra_characters_hyphens
+    assert_equal("0321146530", remove_extra_characters("0-321-14653-0"))
+  end
+
 end

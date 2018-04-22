@@ -21,3 +21,9 @@ def isbn_multiply_digits(params)
   end
   return result
 end
+
+def remove_extra_characters(params)
+  params.delete!("-")
+  params.delete!(" ")
+  return params
+end
