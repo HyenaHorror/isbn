@@ -18,11 +18,16 @@ class ISBN_Test < Minitest::Test
   end
 
   def test_isbnmultiplydigits_actually_multiplies1
-    assert_equal([1,4,9,16,25,36,49,64,81,0], isbn_multiply_digits("1234567890"))
+    assert_equal([1,4,9,16,25,36,49,64,81,0], isbn_multiply_digits([1,2,3,4,5,6,7,8,9,0]))
   end
 
   def test_isbnmultiplydigits_actually_multiplies2
-    assert_equal([2,2,9,20,20,36,56,56,81,0], isbn_multiply_digits("2135468790"))
+    assert_equal([2,2,9,20,20,36,56,56,81,0], isbn_multiply_digits([2,1,3,5,4,6,8,7,9,0]))
   end
-
+  def test_isbn10_checksum_pass
+    assert_equal(true, isbn10("0471958697"))
+  end
+  def test_isbn10_checksum_fail
+    assert_equal(false, isbn10("1212121212"))
+  end
 end
