@@ -1,5 +1,5 @@
 def isbn10 (params)
-  isbn_array = convert_input_to_array(params)
+  isbn_array = convert_input_to_array(remove_extra_characters(params))
   if isbn_array.length == 10
     check_sum = isbn_array.delete_at(9)
     if isbn_array.sum % 11 == check_sum
@@ -12,6 +12,14 @@ def isbn10 (params)
   end
 end
 
+def isbn13(params)
+  isbn13 = remove_extra_characters(params)
+  if isbn13.length == 13
+    return true
+  else
+    return false
+  end
+end
 
 def remove_extra_characters(params)
   params.delete!("-")

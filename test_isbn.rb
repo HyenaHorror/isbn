@@ -48,4 +48,18 @@ class ISBN_Test < Minitest::Test
     assert_equal([1,4,9,16,25,2], convert_input_to_array("123452"))
   end
 
+  def test_isbn13_length_check_pass1
+    assert_equal(true, isbn13("9780470059029"))
+  end
+  def test_isbn13_length_check_pass2
+    assert_equal(true, isbn13("978-0-13-149505-0"))
+  end
+  def test_isbn13_length_check_fail1
+    assert_equal(false, isbn13("12345"))
+  end
+  def test_isbn13_length_check_fail2
+    assert_equal(false, isbn13("0471958697"))
+  end
+
+
 end
