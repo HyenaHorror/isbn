@@ -15,7 +15,7 @@ end
 def isbn13(params)
   isbn13 = remove_extra_characters(params)
   if isbn13.length == 13
-    return true
+    checksum_isbn13(convert_input_to_array_isbn13(isbn13))
   else
     return false
   end

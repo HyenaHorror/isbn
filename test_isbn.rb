@@ -52,7 +52,7 @@ class ISBN_Test < Minitest::Test
     assert_equal(true, isbn13("9780470059029"))
   end
   def test_isbn13_length_check_pass2
-    assert_equal(true, isbn13("978-0-13-149505-0"))
+    assert_equal(true, isbn13("978 1 630 08780 7"))
   end
   def test_isbn13_length_check_fail1
     assert_equal(false, isbn13("12345"))
