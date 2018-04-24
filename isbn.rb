@@ -32,8 +32,7 @@ def isbn13(params)
 end
 
 def remove_extra_characters(params)
-  params.delete!("-")
-  params.delete!(" ")
+  params.gsub!(/\W/, '')
   return params
 end
 
