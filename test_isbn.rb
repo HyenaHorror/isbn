@@ -61,5 +61,11 @@ class ISBN_Test < Minitest::Test
     assert_equal(false, isbn13("0471958697"))
   end
 
+    def test_convertisbn13_1
+      assert_equal([1,6,3,12,5,18,7,24,9,0,1,6,3], convert_input_to_array_isbn13("1234567890123"))
+    end
 
+    def test_convertisbn13_1
+      assert_equal([1,9,1,9,1,9,1,9,1,9,1,9,1], convert_input_to_array_isbn13("1313131313131"))
+    end
 end
