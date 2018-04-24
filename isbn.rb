@@ -1,3 +1,13 @@
+def process_isbn(type, value)
+  if type == "isbn10"
+    isbn10(value)
+  elsif type == "isbn13"
+    isbn13(value)
+  else
+    return false
+  end
+end
+
 def isbn10 (params)
   isbn_array = convert_input_to_array(remove_extra_characters(params))
   if isbn_array.length == 10

@@ -83,4 +83,14 @@ class ISBN_Test < Minitest::Test
   def test_isbn13_checksum_pass3
     assert_equal(true, checksum_isbn13(convert_input_to_array_isbn13("9780470059029")))
   end
+
+  def test_process_isbn_10
+    assert_equal(true, process_isbn("isbn10", "0471958697"))
+  end
+  def test_process_isbn_13
+    assert_equal(true, process_isbn("isbn13", "978 1 630 08780 7"))
+  end
+  def test_process_isbn_invalid
+    assert_equal(false, process_isbn("isbn10", "1212121212"))
+  end
 end
