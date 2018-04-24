@@ -61,11 +61,26 @@ class ISBN_Test < Minitest::Test
     assert_equal(false, isbn13("0471958697"))
   end
 
-    def test_convertisbn13_1
-      assert_equal([1,6,3,12,5,18,7,24,9,0,1,6,3], convert_input_to_array_isbn13("1234567890123"))
-    end
+  def test_convertisbn13_1
+    assert_equal([1,6,3,12,5,18,7,24,9,0,1,6,3], convert_input_to_array_isbn13("1234567890123"))
+  end
 
-    def test_convertisbn13_1
-      assert_equal([1,9,1,9,1,9,1,9,1,9,1,9,1], convert_input_to_array_isbn13("1313131313131"))
-    end
+  def test_convertisbn13_2
+    assert_equal([1,9,1,9,1,9,1,9,1,9,1,9,1], convert_input_to_array_isbn13("1313131313131"))
+  end
+
+  def test_convertisbn13_3
+    assert_equal([9,21,8,0,4,21,0,0,5,27,0,6,9], convert_input_to_array_isbn13("9780470059029"))
+  end
+  def test_isbn13_checksum_pass1
+    input = remove_extra_characters("978-1-4028-9462-6")
+    assert_equal(true, checksum_isbn13(convert_input_to_array_isbn13(input)))
+  end
+  def test_isbn13_checksum_pass2
+    input = remove_extra_characters("978 1 630 08780 7")
+    assert_equal(true, checksum_isbn13(convert_input_to_array_isbn13(input)))
+  end
+  def test_isbn13_checksum_pass3
+    assert_equal(true, checksum_isbn13(convert_input_to_array_isbn13("9780470059029")))
+  end
 end

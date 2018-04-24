@@ -41,3 +41,14 @@ def convert_input_to_array_isbn13(params)
   result = params.split(//).map(&:to_i).map.with_index {|value, index| if index % 2 != 0 then value *= 3 else value = value end}
   return result
 end
+
+def checksum_isbn13(params)
+  input = params.clone
+  input.pop
+  checksum = 10 - (input.sum % 10)
+  if checksum == params[-1]
+    return true
+  else
+    return false
+  end
+end
