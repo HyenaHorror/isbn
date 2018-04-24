@@ -32,12 +32,13 @@ def isbn13(params)
 end
 
 def remove_extra_characters(params)
-  params.gsub!(/\W/, '')
-  return params
+  params.gsub(/\W/, '') #Removes all non-alphanumeric values (\W)
 end
 
 def convert_input_to_array(params)
+  #Splits each string character into separate array elements, turning into integers. Then iterates over each by multiplying it by its position in the string (index plus one, i.e. third position is (2+1)).
   result = params.split(//).map(&:to_i).map.with_index {|value, index| value = value * (index +1)}
+  #Determines check digit by checking original parameters for X.
   if params.downcase.include? "x"
     result[-1] = 10
   else
@@ -47,12 +48,13 @@ def convert_input_to_array(params)
 end
 
 def convert_input_to_array_isbn13(params)
+  #Splits each string character into separate array elements, turning into ints. Then iterate over each element with the index value to multiply by 3 (if index is not even, i.e. 'every other one')
   result = params.split(//).map(&:to_i).map.with_index {|value, index| if index % 2 != 0 then value *= 3 else value = value end}
   return result
 end
 
 def checksum_isbn13(params)
-  input = params.clone
+  input = params.dup #Must dupe or clone to avoid affecting original value.
   input.pop
   checksum = 10 - (input.sum % 10)
   if checksum == params[-1]
