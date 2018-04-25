@@ -12,8 +12,5 @@ post '/check_input' do
 end
 
 get '/validation' do
-  value = params[:value]
-  status = params[:status]
-  type = params[:type]
-  erb :validation, locals:{type:type,value:value,status:status}
+  erb :validation, locals:{type:params[:type],value:params[:value],status:params[:status]}
 end
