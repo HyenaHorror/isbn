@@ -54,8 +54,7 @@ def convert_input_to_array_isbn13(params)
 end
 
 def checksum_isbn13(params)
-  input = params.dup #Must dupe or clone to avoid affecting original value.
-  input.pop
+  input = params.slice(0..-2) #Duplicates params without last element.
   checksum = 10 - (input.sum % 10)
   if checksum == params[-1]
     return true
