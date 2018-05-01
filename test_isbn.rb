@@ -1,4 +1,5 @@
 require "minitest/autorun"
+require "csv"
 require_relative "isbn.rb"
 
 class ISBN_Test < Minitest::Test
@@ -93,4 +94,18 @@ class ISBN_Test < Minitest::Test
   def test_process_isbn_invalid
     assert_equal(false, process_isbn("isbn10", "1212121212"))
   end
+
+  def test_csv_read_file_1
+    actual = csv_read_file("read_file_test.csv")
+    assert_equal(12345, actual[0][:col1])
+  end
+  def test_csv_read_file_2
+    actual = csv_read_file("read_file_test.csv")
+    assert_equal("true", actual[0][:col2])
+  end
+  def test_csv_read_file_1
+    actual = csv_read_file("read_file_test.csv")
+    assert_equal("Frank", actual[0][:col3])
+  end
+
 end
