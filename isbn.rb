@@ -72,3 +72,9 @@ def csv_read_file(file)
   # puts hashed_data
   return hashed_data
 end
+
+def csv_add_isbn(file, isbn, status, user)
+  CSV.open(file, "a") do |csv|
+    csv << [isbn, status, user]
+  end
+end

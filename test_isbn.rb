@@ -108,4 +108,22 @@ class ISBN_Test < Minitest::Test
     assert_equal("Frank", actual[0][:col3])
   end
 
+  def test_csv_add_isbn_1
+    test_file = "csv_add_line_test.csv"
+    csv_add_isbn(test_file, 1234567890, "invalid", "Benjamin")
+    actual = csv_read_file(test_file)
+    assert_equal(1234567890, actual[-1][:col1])
+  end
+  def test_csv_add_isbn_2
+    test_file = "csv_add_line_test.csv"
+    csv_add_isbn(test_file, 1234567890, "invalid", "Benjamin")
+    actual = csv_read_file(test_file)
+    assert_equal("invalid", actual[-1][:col2])
+  end
+  def test_csv_add_isbn_3
+    test_file = "csv_add_line_test.csv"
+    csv_add_isbn(test_file, 1234567890, "invalid", "Benjamin")
+    actual = csv_read_file(test_file)
+    assert_equal("Benjamin", actual[-1][:col3])
+  end
 end
