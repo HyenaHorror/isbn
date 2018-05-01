@@ -126,4 +126,10 @@ class ISBN_Test < Minitest::Test
     actual = csv_read_file(test_file)
     assert_equal("Benjamin", actual[-1][:col3])
   end
+
+  def test_initalize_csv_file
+    file = "create_text.csv"
+    csv_create_new(file, "col1, col2, col3")
+    assert_equal(true, File.exist?(file))
+  end
 end

@@ -78,3 +78,9 @@ def csv_add_isbn(file, isbn, status, user)
     csv << [isbn, status, user]
   end
 end
+
+def csv_create_new(filename, columns)
+  CSV.open(filename, "w") do |csv|
+    csv << columns.split(",")
+  end
+end
