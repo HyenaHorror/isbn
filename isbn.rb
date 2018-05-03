@@ -1,22 +1,22 @@
-def process_isbn(type, value)
-  if type == "isbn10"
-    isbn10(value)
-  elsif type == "isbn13"
-    isbn13(value)
+def process_isbn(value)
+  isbn = remove_extra_characters(value)
+  if isbn.length == 10
+    isbn10(isbn)
+  elsif isbn.length == 13
+    isbn13(isbn)
   else
     return false
   end
 end
 
 def isbn10 (params)
-  isbn_array = convert_input_to_array(remove_extra_characters(params))
+  isbn_array = convert_input_to_array(params)
   check_sum = isbn_array.delete_at(9)
   isbn_array.sum % 11 == check_sum
 end
 
 def isbn13(params)
-  isbn13 = remove_extra_characters(params)
-  checksum_isbn13(convert_input_to_array_isbn13(isbn13))
+  checksum_isbn13(convert_input_to_array_isbn13(params))
 end
 
 def remove_extra_characters(params)

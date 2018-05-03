@@ -8,21 +8,21 @@ class ISBN_Test < Minitest::Test
   end
 
   def test_isbn10_length_check_true
-    assert_equal(true, isbn10("0471958697"))
+    assert_equal(true, process_isbn("0471958697"))
   end
 
   def test_isbn10_length_check_false1
-    assert_equal(false, isbn10("123"))
+    assert_equal(false, process_isbn("123"))
   end
   def test_isbn10_length_check_false1
-    assert_equal(false, isbn10("123456789ABCDE"))
+    assert_equal(false, process_isbn("123456789ABCDE"))
   end
 
   def test_isbn10_checksum_pass
-    assert_equal(true, isbn10("0471958697"))
+    assert_equal(true, process_isbn("0471958697"))
   end
   def test_isbn10_checksum_fail
-    assert_equal(false, isbn10("1212121212"))
+    assert_equal(false, process_isbn("1212121212"))
   end
 
   def test_remove_extra_characters_spaces
@@ -50,17 +50,17 @@ class ISBN_Test < Minitest::Test
   end
 
   def test_isbn13_length_check_pass1
-    assert_equal(true, isbn13("9780470059029"))
+    assert_equal(true, process_isbn("9780470059029"))
   end
   def test_isbn13_length_check_pass2
-    assert_equal(true, isbn13("978 1 630 08780 7"))
+    assert_equal(true, process_isbn("978 1 630 08780 7"))
   end
   def test_isbn13_length_check_fail1
-    assert_equal(false, isbn13("12345"))
+    assert_equal(false, process_isbn("12345"))
   end
-  def test_isbn13_length_check_fail2
-    assert_equal(false, isbn13("0471958697"))
-  end
+  # def test_isbn13_length_check_fail2
+  #   assert_equal(false, process_isbn("0471958697"))
+  # end
 
   def test_convertisbn13_1
     assert_equal([1,6,3,12,5,18,7,24,9,0,1,6,3], convert_input_to_array_isbn13("1234567890123"))
@@ -86,13 +86,13 @@ class ISBN_Test < Minitest::Test
   end
 
   def test_process_isbn_10
-    assert_equal(true, process_isbn("isbn10", "0471958697"))
+    assert_equal(true, process_isbn("0471958697"))
   end
   def test_process_isbn_13
-    assert_equal(true, process_isbn("isbn13", "978 1 630 08780 7"))
+    assert_equal(true, process_isbn("978 1 630 08780 7"))
   end
   def test_process_isbn_invalid
-    assert_equal(false, process_isbn("isbn10", "1212121212"))
+    assert_equal(false, process_isbn("1212121212"))
   end
 
   def test_csv_read_file_1
