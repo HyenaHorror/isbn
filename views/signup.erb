@@ -1,0 +1,34 @@
+
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+
+  <form action="/signup_submit" method="post">
+    <h4>Note: Encryption NYI. Data will be visible to developers.</h4>
+    <label for="name">Your name</label>
+    <div><input type="text" size="24" name="name" requred><span class="red">*</span></div>
+    <label for="email">Email</label>
+    <div><input type="email" size="24" name="email" requred><span class="red">*</span></div>
+    <label for="password">Password</label>
+    <div><input type="password" size="24" placeholder="At least 8 characters" name="password" pattern=".{8,32}" title="8 to 32 characters" requred><span class="red">*</span></div>
+    <!-- <p>
+      <label for="gender">Gender</label><br>
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="male" value="male">
+      <label for="female">Female</label>
+      <input type="radio" name="gender" id="female" value="female">
+      <label for="other">Other</label>
+      <input type="radio" name="gender" id="other" value="other">
+    </p>
+    <p>
+      Birthday<br>
+      <input type="number" name="month" placeholder="Month" min="1" max="12">
+      <input type="number" name="day" placeholder="Day" min="1" max="31">
+      <input type="number" name="year" placeholder="Year" min="1900" max="2018">
+    </p> -->
+    <p class="red">* Required</p>
+    <input type="submit" value="Sign up">
+    <input type="reset">
+  </form>

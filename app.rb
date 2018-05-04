@@ -1,8 +1,37 @@
 require 'sinatra'
 require 'erb'
 require_relative 'isbn.rb'
+enable :sessions
 
 get '/' do
+  erb :login
+end
+
+post '/login_submit' do
+  function_to_lookup_user(params[:username], params[:password])
+
+  redirect '/check_if'
+end
+
+get '/signup' do
+  erb :signup
+end
+
+post '/signup_submit' do
+  new_user = {
+    "name" => params[:name],
+    "email" => params[:l_name],
+    "password" => params[:l_name],
+    # "gender" => params[:gender],
+    # "b_day" => [params[:month], params[:day], params[:year]],
+  }
+
+  function_for_adding_new_user(new_user)
+  session[:current_user]
+  redirect '/check_if_valid'
+end
+
+get '/check_if_valid' do
   erb :check_if_valid
 end
 
