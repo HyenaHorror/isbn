@@ -38,7 +38,7 @@ get '/check_if_valid' do
 end
 
 post '/check_input' do
-  isbn_status = process_isbn(params[:isbn_type], params[:isbn_value])
+  isbn_status = process_isbn(params[:isbn_value])
   redirect '/validation?type=' + params[:isbn_type] + '&value=' + params[:isbn_value] + '&status=' + isbn_status.to_s
 end
 
