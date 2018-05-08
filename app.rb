@@ -8,9 +8,11 @@ get '/' do
 end
 
 post '/login_submit' do
-  function_to_lookup_user(params[:username], params[:password])
-
-  redirect '/check_if'
+  if temp_userpass(params[:username], params[:password]) == true
+    redirect '/check_if_valid'
+  else
+    redirect '/'
+  end
 end
 
 get '/signup' do
