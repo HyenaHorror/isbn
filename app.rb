@@ -6,7 +6,7 @@ enable :sessions
 get '/' do
   erb :check_if_valid
 end
-
+=begin Login/Signup
 post '/login_submit' do
   if temp_userpass(params[:username], params[:password]) == true
     redirect '/check_if_valid'
@@ -32,7 +32,7 @@ post '/signup_submit' do
   session[:current_user]
   redirect '/check_if_valid'
 end
-
+=end
 get '/check_if_valid' do
   erb :check_if_valid
 end
