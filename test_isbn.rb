@@ -1,6 +1,8 @@
 require "minitest/autorun"
 require "csv"
+
 require_relative "isbn.rb"
+require_relative "aws.rb"
 
 class ISBN_Test < Minitest::Test
   def test_int_is_int
@@ -131,5 +133,14 @@ class ISBN_Test < Minitest::Test
     file = "create_text.csv"
     csv_create_new(file, "col1, col2, col3")
     assert_equal(true, File.exist?(file))
+  end
+
+  def test_check_aws_file_exists_pass
+    actual_result = check_if_file_exists("test_file.txt")
+    assert_equal(true, actual_result)
+  end
+  def test_check_aws_file_exists_fail
+    actual_result = check_if_file_exists("schrodinger.csv")
+    assert_equal(false, actual_result)
   end
 end
