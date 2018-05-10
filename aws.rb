@@ -1,7 +1,9 @@
 require "aws-sdk"
+require "csv"
+require_relative "isbn.rb"
 
 load './local_env.rb' if File.exist?('./local_env.rb')
-
+#TODO: Remove excess credential code
 def check_if_file_exists(filename)
   s3 = Aws::S3::Resource.new(
     region: ENV['AWS_REGION'],
@@ -37,4 +39,23 @@ def upload_new_file_to_bucket(file)
   #Creates the object for upload.
   obj = s3.bucket(bucket).object(name)
   obj.upload_file(file)
+end
+
+def read_bucket_file(file) #Only working for text files, not CSV
+  client = Aws::S3::Client.new(
+    access_key_id: ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['AWS_REGION'])
+  bucket = 'rb-isbn'
+  #Grabs the file, stripping any extra dir text.
+  s3 = Aws::S3::Resource.new(client: client)
+
+  obj = s3.bucket(bucket).object(file)
+  #Opens file and reads from beginning
+  # r is read only
+  # b is binary file mode (suppresses CRLF conversion on Windows)
+  File.open(file, "rb") do |row|
+    return obj.get.body.string
+  end
+
 end

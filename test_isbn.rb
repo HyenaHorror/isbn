@@ -150,4 +150,11 @@ class ISBN_Test < Minitest::Test
     actual_result = check_if_file_exists(file)
     assert_equal(true, actual_result)
   end
+
+  def test_read_bucket_txt
+    file = "test_file.txt"
+    expectation = "Now this is a story all about how my life got flipped-turned upside down\n"
+    actual = read_bucket_file(file)
+    assert_equal(expectation, actual)
+  end
 end
