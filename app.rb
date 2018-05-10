@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'erb'
+require 'csv'
 require_relative 'isbn.rb'
 enable :sessions
 
@@ -38,8 +39,11 @@ get '/check_if_valid' do
 end
 
 post '/check_input' do
+  value = params[:isbn_value]
+  type = "isbn#{params[:isbn_value].length}"
   isbn_status = process_isbn(params[:isbn_value])
-  redirect '/validation?type=' + params[:isbn_type] + '&value=' + params[:isbn_value] + '&status=' + isbn_status.to_s
+  csv_add_isbn("checked_numbers.csv", value, isbn_status, "Admin")
+  redirect '/validation?type=' + type + '&value=' + value + '&status=' + isbn_status.to_s
 end
 
 get '/validation' do
