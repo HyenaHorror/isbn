@@ -61,13 +61,15 @@ def csv_read_file(file)
 end
 
 def csv_add_isbn(file, isbn, status, user)
-  CSV.open(file, "a") do |csv|
+  #a, write mode at end of file
+  #b, binary mode to prevent Windows malforming files
+  CSV.open(file, "ab") do |csv|
     csv << [isbn, status, user]
   end
 end
 
 def csv_create_new(filename, columns)
-  CSV.open(filename, "w") do |csv|
+  CSV.open(filename, "wb") do |csv|
     csv << columns.split(",")
   end
 end
