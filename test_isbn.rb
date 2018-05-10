@@ -143,4 +143,11 @@ class ISBN_Test < Minitest::Test
     actual_result = check_if_file_exists("schrodinger.csv")
     assert_equal(false, actual_result)
   end
+
+  def test_upload_new_file_to_bucket
+    file = "upload_test.txt"
+    upload_new_file_to_bucket(file)
+    actual_result = check_if_file_exists(file)
+    assert_equal(true, actual_result)
+  end
 end

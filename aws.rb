@@ -19,3 +19,22 @@ def check_if_file_exists(filename)
     return false
   end
 end
+
+def upload_new_file_to_bucket(file)
+  # Double colon :: accesses items inside of classes/modules
+  # In this case we access S3 of Aws, then Client of S3
+  client = Aws::S3::Client.new(
+    access_key_id: ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['AWS_REGION'])
+
+  bucket = 'rb-isbn'
+
+  #Grabs the filename, stripping any extra dir text.
+  name = File.basename(file)
+
+  s3 = Aws::S3::Resource.new(client: client)
+  #Creates the object for upload.
+  obj = s3.bucket(bucket).object(name)
+  obj.upload_file(file)
+end
