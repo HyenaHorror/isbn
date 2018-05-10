@@ -157,4 +157,13 @@ class ISBN_Test < Minitest::Test
     actual = read_bucket_file(file)
     assert_equal(expectation, actual)
   end
+
+  def test_pull_file_from_bucket
+    write_file = "saved_from_bucket.csv"
+    read_file = "pulled_from_bucket.csv"
+    pull_csv_from_s3_into_local(read_file, write_file)
+    actual = csv_read_file(write_file)[-1]
+    expectation = {:col1=>4, :col2=>5, :col3=>6}
+    assert_equal(expectation, actual)
+  end
 end

@@ -59,3 +59,15 @@ def read_bucket_file(file) #Only working for text files, not CSV
   end
 
 end
+
+def pull_csv_from_s3_into_local(read_file, write_file)
+  client = Aws::S3::Client.new(
+    access_key_id: ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['AWS_REGION'])
+  bucket = 'rb-isbn'
+  s3 = Aws::S3::Resource.new(client: client)
+  obj = s3.bucket(bucket).object(read_file)
+  #Gets the objects data and saves it to the target file.
+  obj.get(response_target: write_file)
+end
