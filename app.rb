@@ -4,7 +4,7 @@ require_relative 'isbn.rb'
 enable :sessions
 
 get '/' do
-  erb :login
+  erb :check_if_valid
 end
 
 post '/login_submit' do
