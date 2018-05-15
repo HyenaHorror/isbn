@@ -2,7 +2,12 @@ require 'sinatra'
 require 'erb'
 require 'csv'
 require_relative 'isbn.rb'
+require_relative 'aws.rb'
 enable :sessions
+
+# Ensures current file is up-to-date.
+checked = "checked_numbers.csv"
+pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
   erb :check_if_valid
@@ -42,7 +47,10 @@ post '/check_input' do
   value = params[:isbn_value]
   type = "isbn#{params[:isbn_value].length}"
   isbn_status = process_isbn(params[:isbn_value])
-  csv_add_isbn("checked_numbers.csv", value, isbn_status, "Admin")
+  checked = "checked_numbers.csv"
+
+  csv_add_isbn(checked, value, isbn_status, "Admin")
+  upload_new_file_to_bucket(checked)
   redirect '/validation?type=' + type + '&value=' + value + '&status=' + isbn_status.to_s
 end
 
