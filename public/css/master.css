@@ -4,7 +4,7 @@ html{
 body {
   background-color: #34415A;
   color: #B5B3CB;
-  font-size: 22px;
+  /* font-size: 22px; */
   text-align: center;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
@@ -99,4 +99,12 @@ div img {
 .container {
 	text-align: center;
 	padding: 5px;
+}
+.history {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.history td {
+  padding-left: 5px;
+  padding-right: 5px;
 }
