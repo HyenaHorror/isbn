@@ -68,3 +68,7 @@ end
 get '/about' do
   erb :about
 end
+
+get '/privacy' do
+  erb :privacy
+end
