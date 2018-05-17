@@ -76,6 +76,7 @@ div img {
   color: #FFFFFF;
   background-color: #7D99CF;
   border-radius: 10px;
+  border: none;
 }
 .pageCenter{
   /* vertical-align: center; */
