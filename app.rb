@@ -58,10 +58,5 @@ end
 
 get '/history' do
   checked_numbers = csv_read_file("checked_numbers.csv")
-  puts """
-  ************************************************************
-  #{checked_numbers}
-  ************************************************************
-  """
   erb :history, locals:{checked_numbers:checked_numbers}
 end
