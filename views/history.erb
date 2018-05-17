@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <td>ISBN</td>
+    <td>Status</td>
+    <td>User</td>
+  </tr>
+  <% checked_numbers.each do |hash|%>
+    <tr>
+      <td>
+        <%=hash[:isbn]%>
+      </td>
+      <td>
+        <%=hash[:status]%>
+      </td>
+      <td>
+        <%=hash[:user]%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<a href="/check_if_valid"><button>Return to Input</button></a>
