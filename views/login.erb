@@ -6,12 +6,17 @@
   <img src="/img/tentacle_logo.png" alt="">
 </div>
 <form action="/login_submit" method="post">
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  <fb:login-button data-size="large" data-button-type="continue_with" scope="public_profile,email" onlogin="checkLoginState();">
   </fb:login-button>
+  <br>
+  <br>
   <div id="status">
   </div>
+  <br>
+  <div class="">
 
-<!-- <label for="name">Your name: </label> -->
-  <input type="hidden" name="name" id="name_for_user" value="Guest">
-  <input type="submit" name="" value="Continue to ISBN" class="button">
+  <!-- <label for="name">Your name: </label> -->
+    <input type="hidden" name="name" id="name_for_user" value="Guest">
+    <input type="submit" name="" value="Continue to ISBN" class="button">
+  </div>
 </form>
