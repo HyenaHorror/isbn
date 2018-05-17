@@ -10,17 +10,15 @@ checked = "checked_numbers.csv"
 pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
-  erb :check_if_valid
+  erb :login
+  # erb :check_if_valid
 end
-=begin Login/Signup
 post '/login_submit' do
-  if temp_userpass(params[:username], params[:password]) == true
-    redirect '/check_if_valid'
-  else
-    redirect '/'
-  end
+  session[:name] = params[:name]
+  redirect '/check_if_valid'
 end
 
+=begin Login/Signup
 get '/signup' do
   erb :signup
 end
@@ -49,7 +47,7 @@ post '/check_input' do
   isbn_status = process_isbn(params[:isbn_value])
   checked = "checked_numbers.csv"
 
-  csv_add_isbn(checked, value, isbn_status, "Admin")
+  csv_add_isbn(checked, value, isbn_status, session[:name])
   upload_new_file_to_bucket(checked)
   redirect '/validation?type=' + type + '&value=' + value + '&status=' + isbn_status.to_s
 end
