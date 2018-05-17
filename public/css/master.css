@@ -1,12 +1,11 @@
+html{
+  height: 100%;
+}
 body {
-  background-color: rgb(54, 54, 118);
+  background-color: #34415A;
   color: rgb(128, 128, 174);
   text-align: center;
-}
-
-.button {
-  color: #555590;
-  background-color: #0C0C3E;
+  font-family: 'Libre Baskerville', serif;
 }
 
 footer {
@@ -18,26 +17,20 @@ footer {
   text-align: center
 }
 
-.pageCenter{
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-  float: none;
-}
 
-ul {
+.navbarLinks  {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #1D2536;
 }
 
-li {
+.navbarLinks li {
     float: left;
 }
 
-li a {
+.navbarLinks li a {
     display: block;
     color: white;
     text-align: center;
@@ -45,6 +38,30 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
-    background-color: #111;
+.navbarLinks li a:hover {
+    background-color: #7D99CF;
+}
+
+.content {
+  background-color: #4A5C80;
+  width: 70%;
+  height: 100vh; /* extends background to bottom of page */
+  padding: 0;
+}
+
+.button {
+  color: #555590;
+  background-color: #0C0C3E;
+}
+.pageCenter{
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  float: none;
+}
+
+.loginLogo img {
+  max-width: 100%;
+  max-height: 100%;
 }
