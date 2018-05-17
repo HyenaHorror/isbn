@@ -1,7 +1,12 @@
+<script type="text/javascript" src="/facebook.js">
+
+</script>
 <form action="/login_submit" method="post">
-  <!-- <div><input type="email" name="email" required placeholder="Email"></div> -->
-  <div><input type="text" name="username" required placeholder="Username"></div>
-  <div><input type="password" name="password" required placeholder="Password"></div>
-  <input type="submit" value="Log in">
+<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+  <div id="status">
+  </div>
+
+<label for="name">Your name: </label>
+  <input type="text" name="name" id="name_for_user" value="Guest">
+  <input type="submit" name="" value="Continue to ISBN">
 </form>
-<a href="/signup"><button type="button" name="button">Sign up</button></a>
