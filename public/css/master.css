@@ -73,8 +73,9 @@ div img {
 .button {
   font-family: 'Libre Baskerville', serif;
   font-size: 22px;
-  color: #555590;
-  background-color: #0C0C3E;
+  color: #FFFFFF;
+  background-color: #7D99CF;
+  border-radius: 10px;
 }
 .pageCenter{
   /* vertical-align: center; */
