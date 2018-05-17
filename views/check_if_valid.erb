@@ -1,5 +1,5 @@
 <form action="/check_input" method="post">
-  <p>Please enter an ISBN10 or ISBN13</p>
+  <h2>Please enter an ISBN10 or ISBN13</h2>
   String to check: <input type="text" name="isbn_value" minlength="10" maxlength="13" required autofocus onkeyup="this.value = this.value.replace(/[^0-9xX]/, '')" >
   <!-- <ul>
     <li>
@@ -9,6 +9,8 @@
       ISBN13: <input type="radio" name="isbn_type" required value="isbn13">
     </li>
   </ul> -->
-  <input type="submit" class="button">
+  <p>
+    <input type="submit" class="button">
+  </p>
 </form>
 <a href="/history"><button class="button">See History</button></a>

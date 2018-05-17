@@ -3,9 +3,26 @@ html{
 }
 body {
   background-color: #34415A;
-  color: rgb(128, 128, 174);
+  color: #B5B3CB;
+  font-size: 22px;
   text-align: center;
   font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 350%;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+a {
+  color: #D2CFE5;
+}
+a:visited{
+  color: #817CA7;
+}
+ul {
+  list-style: none;
 }
 
 footer {
@@ -17,6 +34,10 @@ footer {
   text-align: center
 }
 
+div img {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 .navbarLinks  {
     list-style-type: none;
@@ -50,18 +71,32 @@ footer {
 }
 
 .button {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
   color: #555590;
   background-color: #0C0C3E;
 }
 .pageCenter{
-  vertical-align: center;
+  /* vertical-align: center; */
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
   float: none;
 }
+.about {
+  width: 80%;
+  margin: auto;
+}
 
-.loginLogo img {
-  max-width: 100%;
-  max-height: 100%;
+.about img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.staff {
+  margin: auto;
+}
+.container {
+	text-align: center;
+	padding: 5px;
 }
