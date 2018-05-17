@@ -42,21 +42,29 @@ get '/check_if_valid' do
 end
 
 post '/check_input' do
-  value = params[:isbn_value]
-  type = "isbn#{params[:isbn_value].length}"
-  isbn_status = process_isbn(params[:isbn_value])
+  session[:value] = params[:isbn_value]
+  session[:type] = "isbn#{params[:isbn_value].length}"
+  session[:status] = process_isbn(params[:isbn_value])
   checked = "checked_numbers.csv"
 
-  csv_add_isbn(checked, value, isbn_status, session[:name])
+  csv_add_isbn(checked, session[:value], session[:status], session[:name])
   upload_new_file_to_bucket(checked)
-  redirect '/validation?type=' + type + '&value=' + value + '&status=' + isbn_status.to_s
+  redirect '/validation' #?type=' + type + '&value=' + value + '&status=' + isbn_status.to_s
 end
 
 get '/validation' do
-  erb :validation, locals:{type:params[:type],value:params[:value],status:params[:status]}
+  erb :validation, locals:{type:session[:type],value:session[:value],status:session[:status]}
 end
 
 get '/history' do
   checked_numbers = csv_read_file("checked_numbers.csv")
   erb :history, locals:{checked_numbers:checked_numbers}
+end
+
+get '/contact' do
+  erb :contact
+end
+
+get '/about' do
+  erb :about
 end
