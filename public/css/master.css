@@ -39,6 +39,15 @@ div img {
   max-height: 100%;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid #687EA9;
+  padding: 2px 15px 2px 15px;
+}
+
 .navbarLinks  {
     list-style-type: none;
     margin: 0;
@@ -72,10 +81,10 @@ div img {
 
 .button {
   font-family: 'Libre Baskerville', serif;
-  font-size: 22px;
+  font-size: 18px;
   color: #FFFFFF;
   background-color: #7D99CF;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
 }
 .pageCenter{
