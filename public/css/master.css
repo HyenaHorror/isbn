@@ -1,5 +1,6 @@
 html{
   height: 100%;
+  /* background-size:contain contain; */
 }
 body {
   background-color: #34415A;
@@ -8,6 +9,7 @@ body {
   text-align: center;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
+  height: 100%;
 }
 
 h1 {
@@ -26,7 +28,7 @@ ul {
 }
 
 footer {
-  position: fixed;
+  position: static;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -118,4 +120,22 @@ table, td, th {
 .history td {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.contactEntry {
+  width: 80%;
+  height: 80%;
+  padding: 10px;
+  border: 0;
+  margin: 10px;
+}
+
+#aboutTable {
+  border: none;
+}
+
+#aboutTable td {
+  border: none;
+  /* width: 30%; */
+  padding: 0px 0px 0px 0px;
 }
