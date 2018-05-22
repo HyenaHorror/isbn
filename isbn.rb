@@ -56,7 +56,7 @@ def checksum_isbn13(params)
 end
 
 def csv_read_file(file)
-  data = CSV.read(file, {encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all})
+  data = CSV.read(file, {encoding: "UTF-8", headers: true, header_converters: :symbol})
   hashed_data = data.map { |d| d.to_hash }
 end
 
