@@ -114,7 +114,7 @@ class ISBN_Test < Minitest::Test
     test_file = "csv_add_line_test.csv"
     csv_add_isbn(test_file, 1234567890, "invalid", "Benjamin")
     actual = csv_read_file(test_file)
-    assert_equal(1234567890, actual[-1][:col1])
+    assert_equal("1234567890", actual[-1][:col1])
   end
   def test_csv_add_isbn_2
     test_file = "csv_add_line_test.csv"
@@ -163,7 +163,7 @@ class ISBN_Test < Minitest::Test
     read_file = "pulled_from_bucket.csv"
     pull_csv_from_s3_into_local(read_file, write_file)
     actual = csv_read_file(write_file)[-1]
-    expectation = {:col1=>4, :col2=>5, :col3=>6}
+    expectation = {:col1=>"4", :col2=>"5", :col3=>"6"}
     assert_equal(expectation, actual)
   end
 end
