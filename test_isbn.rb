@@ -166,4 +166,11 @@ class ISBN_Test < Minitest::Test
     expectation = {:col1=>"4", :col2=>"5", :col3=>"6"}
     assert_equal(expectation, actual)
   end
+
+  def test_leading_zero
+    test_file = "csv_add_line_test.csv"
+    csv_add_isbn(test_file, 0000000001, "invalid", "Tester")
+    actual = csv_read_file(test_file)
+    assert_equal("0000000001", actual[-1][:col1])
+  end
 end
