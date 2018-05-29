@@ -56,6 +56,7 @@ table, td, th {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 .about {
   width: 80%;
@@ -85,13 +86,13 @@ ul {
   color: white;
 }
 
-.contactEntry {
+/* .contactEntry {
   width: 80%;
   height: 80%;
   padding: 10px;
   border: 0;
   margin: 10px;
-}
+} */
 
 .container {
 	text-align: center;
@@ -165,4 +166,52 @@ ul {
   border: none;
   /* width: 30%; */
   padding: 0px 0px 0px 0px;
+}
+
+/* desktop */
+.wrapper {
+  /* background-color: pink; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+/* * {box-sizing: border-box;} */
+
+
+/* tablet */
+@media only screen and (max-width: 960px) {
+  .content {
+    width: 100%;
+  }
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tab1 {
+    margin: auto;
+    grid-column: auto;
+    grid-row: 1;
+  }
+  .tab2 {
+    margin: auto;
+    grid-column: auto;
+    grid-row: 2;
+  }
+  .tab3 {
+    margin: auto;
+    grid-column: auto;
+    grid-row: 3;
+  }
+}
+/* mobile */
+@media only screen and (max-width: 460px) {
+  .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .content {
+    width: 100%;
+  }
+  .mobAuto {
+    grid-column: 1;
+    grid-row: auto;
+  }
 }
