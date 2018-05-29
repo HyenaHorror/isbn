@@ -179,7 +179,7 @@ ul {
 
 
 /* tablet */
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1100px) {
   .content {
     width: 100%;
   }
@@ -203,7 +203,7 @@ ul {
   }
 }
 /* mobile */
-@media only screen and (max-width: 460px) {
+@media only screen and (max-width: 575px) {
   .wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
