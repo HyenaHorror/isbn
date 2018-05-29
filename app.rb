@@ -1,4 +1,4 @@
-require 'sinatra'
+# require 'sinatra'
 require 'erb'
 require 'csv'
 require_relative 'isbn.rb'
