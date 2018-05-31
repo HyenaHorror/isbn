@@ -1,10 +1,12 @@
 require "minitest/autorun"
 require "csv"
 require "pg"
+require "bcrypt"
 
 require_relative "isbn.rb"
 require_relative "aws.rb"
 require_relative "psql.rb"
+require_relative "bcrypt.rb"
 
 class ISBN_Test < Minitest::Test
   def test_int_is_int
@@ -189,4 +191,10 @@ class ISBN_Test < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_create_password
+    password = "123456Seven"
+    hash = hash_password(password)
+    actual = hash == password
+    assert_equal(true, actual)
+  end
 end
