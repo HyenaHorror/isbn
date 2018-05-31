@@ -1,8 +1,10 @@
 require "minitest/autorun"
 require "csv"
+require "pg"
 
 require_relative "isbn.rb"
 require_relative "aws.rb"
+require_relative "psql.rb"
 
 class ISBN_Test < Minitest::Test
   def test_int_is_int
@@ -173,4 +175,18 @@ class ISBN_Test < Minitest::Test
     actual = csv_read_file(test_file)
     assert_equal("0000000001", actual[-1][:col1])
   end
+
+
+  def test_add_to_database
+    id = read_last_isbn_in_database[0]["id"].to_i + 1
+    name = ["Francis", "Hank", "Bill", "Zoey", "Dale", "Louis", "Boomhauer"].sample
+    isbn = 13.times.map{Random.rand(0..9)}.join
+    status = process_isbn(isbn)
+
+    add_isbn_to_history(isbn, status, name)
+    actual = read_last_isbn_in_database.to_a[0]
+    expected = {"id" => id.to_s, "isbn" => isbn.to_s, "status" => status.to_s, "username" => name}
+    assert_equal(expected, actual)
+  end
+
 end
