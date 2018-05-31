@@ -7,13 +7,16 @@
   <% checked_numbers.each do |hash|%>
     <tr>
       <td>
-        <%=hash[:isbn]%>
+        <%=hash["isbn"]%>
+        <!-- <%#=hash[:isbn].to_s.rjust(hash[:type].to_s.gsub('isbn', ''), '0')%> -->
+        <!-- hash data type: <%#=hash[:isbn].to_s.length%> -->
       </td>
       <td>
-        <%=hash[:status]%>
+        <%=hash["status"]%>
       </td>
       <td>
-        <%=hash[:user]%>
+        <!-- <%=hash[:user]%> -->
+        <%=hash["username"]%>
       </td>
     </tr>
   <% end %>
