@@ -12,7 +12,7 @@ checked = "checked_numbers.csv"
 pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
-  erb :login
+  erb :index
   # erb :check_if_valid
 end
 post '/login_submit' do
