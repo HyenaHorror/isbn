@@ -17,6 +17,8 @@ GEM
     csv (1.0.2)
     jmespath (1.4.0)
     mustermann (1.0.2)
+    pg (1.0.0)
+    pg (1.0.0-x64-mingw32)
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
@@ -35,6 +37,7 @@ DEPENDENCIES
   aws-sdk-core
   aws-sdk-s3
   csv
+  pg
   sinatra
 
 RUBY VERSION
