@@ -14,6 +14,8 @@ GEM
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
     aws-sigv4 (1.0.2)
+    bcrypt (3.1.12)
+    bcrypt (3.1.12-x64-mingw32)
     csv (1.0.2)
     jmespath (1.4.0)
     mustermann (1.0.2)
@@ -36,6 +38,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-core
   aws-sdk-s3
+  bcrypt
   csv
   pg
   sinatra
