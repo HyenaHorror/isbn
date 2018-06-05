@@ -30,3 +30,10 @@ def is_username_in_use(username)
   rs = con.exec "SELECT username FROM Users WHERE username = '#{username}' LIMIT 1"
   rs.to_a[0] != nil
 end
+
+def get_full_history
+  con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
+
+  rs = con.exec "SELECT * FROM History"
+  return rs.to_a
+end
