@@ -66,7 +66,7 @@ end
 
 get '/history' do
   # checked_numbers = csv_read_file("checked_numbers.csv")
-  checked_numbers = read_entire_history_in_database
+  checked_numbers = get_full_history
   erb :history, locals:{checked_numbers:checked_numbers}
 end
 
