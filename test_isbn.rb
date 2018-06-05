@@ -209,7 +209,6 @@ class ISBN_Test < Minitest::Test
     password = (0...16).map { a[rand(a.length)] }.join
     passhash = hash_password(password)
 
-    con.exec "INSERT INTO Users VALUES(DEFAULT, '#{name}', '#{passhash}')"
     rs = con.exec "SELECT * FROM Users ORDER BY Id DESC LIMIT 1"
     actual = rs.to_a[0]
     pass = BCrypt::Password.create(password, cost:4)

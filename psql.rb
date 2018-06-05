@@ -15,10 +15,8 @@ end
 
 def create_new_user(username, password)
   con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
-  rs = con.exec "SELECT * FROM History ORDER BY Id DESC LIMIT 1"
-
-
   passhash = hash_password(password)
+  con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{passhash}')"
 end
 def verify_login_information(username, password)
   con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
