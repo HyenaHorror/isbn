@@ -5,18 +5,10 @@
 
   <img src="/img/tentacle_logo.png" alt="">
 </div>
-<form action="/login_submit" method="post">
   <fb:login-button data-size="large" data-button-type="continue_with" scope="public_profile,email" onlogin="checkLoginState();">
   </fb:login-button>
   <br>
   <br>
   <br>
-  <div>
-    <div class="error">
-      Test
-    </div>
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" name="" value="Login" class="button">
-  </div>
-</form>
+  <a href="/login"><button>Login with Username</button></a><br>
+  <a href="/guest"><button>Continue as Guest</button></a>

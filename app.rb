@@ -14,17 +14,29 @@ pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
   session[:error] = ""
-  erb :index, locals: {error:session[:error]}
+  erb :index
+end
+
+post '/guest' do
+  session[:name] = "Guest"
+  redirect '/check_if_valid'
+end
+
+get '/login' do
+  erb :login, locals:{message:session[:error]}
+end
+
+post '/gotologin' do
+  redirect '/login'
 end
 
 post '/login_submit' do
-  session[:error] = ""
-  if verify_login_information(params[:username], params[:password]) == true
+  if verify_login_information(params[:username].downcase, params[:password]) == true
     session[:name] = params[:username].downcase
     redirect '/check_if_valid'
   else
-    session[:error] = "Incorrect username/password!"
-    redirect '/'
+    session[:error] = "Invalid username/password!"
+    redirect 'login'
   end
 end
 
@@ -34,7 +46,7 @@ end
 
 post '/signup_submit' do
   session[:error] = ""
-  if is_username_in_use(params[:username]) == true
+  if is_username_in_use(params[:username].downcase) == true
     session[:error] = 'Username is already in use!'
     redirect '/signup'
   else

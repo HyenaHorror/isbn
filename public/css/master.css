@@ -154,6 +154,10 @@ ul {
   float: none;
 }
 
+.red {
+  color: red;
+}
+
 .staff {
   margin: auto;
 }
@@ -186,20 +190,10 @@ ul {
   .wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
-  .tab1 {
+  .tablet {
     margin: auto;
     grid-column: auto;
-    grid-row: 1;
-  }
-  .tab2 {
-    margin: auto;
-    grid-column: auto;
-    grid-row: 2;
-  }
-  .tab3 {
-    margin: auto;
-    grid-column: auto;
-    grid-row: 3;
+    grid-row: auto;
   }
 }
 /* mobile */
@@ -210,7 +204,7 @@ ul {
   .content {
     width: 100%;
   }
-  .mobAuto {
+  .mobile {
     grid-column: 1;
     grid-row: auto;
   }
