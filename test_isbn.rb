@@ -226,4 +226,17 @@ class ISBN_Test < Minitest::Test
 
     assert_equal(true, actual)
   end
+
+  def test_is_username_in_use_true
+    username = "admin"
+    actual = is_username_in_use(username)
+
+    assert_equal(true, actual)
+  end
+  def test_is_username_in_use_false
+    username = "asdkjfljsdf"
+    actual = is_username_in_use(username)
+
+    assert_equal(false, actual)
+  end
 end

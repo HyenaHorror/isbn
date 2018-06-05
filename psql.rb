@@ -26,3 +26,9 @@ def verify_login_information(username, password)
   passhash = BCrypt::Password.new rs.to_a[0]["passhash"]
   return passhash == password
 end
+
+def is_username_in_use(username)
+  con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
+  rs = con.exec "SELECT username FROM Users WHERE username = '#{username}' LIMIT 1"
+  rs.to_a[0] != nil
+end
