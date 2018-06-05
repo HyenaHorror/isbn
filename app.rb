@@ -2,6 +2,7 @@ require 'sinatra'
 require 'erb'
 require 'csv'
 require 'pg'
+require 'bcrypt'
 require_relative 'isbn.rb'
 require_relative 'aws.rb'
 require_relative 'psql.rb'
@@ -12,33 +13,37 @@ checked = "checked_numbers.csv"
 pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
-  erb :index
-  # erb :check_if_valid
-end
-post '/login_submit' do
-  session[:name] = params[:name]
-  redirect '/check_if_valid'
+  session[:error] = ""
+  erb :index, locals: {error:session[:error]}
 end
 
-=begin Login/Signup
+post '/login_submit' do
+  session[:error] = ""
+  if verify_login_information(params[:username], params[:password]) == true
+    session[:name] = params[:username].downcase
+    redirect '/check_if_valid'
+  else
+    session[:error] = "Incorrect username/password!"
+    redirect '/'
+  end
+end
+
 get '/signup' do
   erb :signup
 end
 
 post '/signup_submit' do
-  new_user = {
-    "name" => params[:name],
-    "email" => params[:l_name],
-    "password" => params[:l_name],
-    # "gender" => params[:gender],
-    # "b_day" => [params[:month], params[:day], params[:year]],
-  }
-
-  function_for_adding_new_user(new_user)
-  session[:current_user]
-  redirect '/check_if_valid'
+  session[:error] = ""
+  if is_username_in_use(params[:username]) == true
+    session[:error] = 'Username is already in use!'
+    redirect '/signup'
+  else
+    create_new_user(params[:username], params[:password])
+    session[:user] = params[:username].downcase
+    redirect '/check_if_valid'
+  end
 end
-=end
+
 get '/check_if_valid' do
   erb :check_if_valid
 end
