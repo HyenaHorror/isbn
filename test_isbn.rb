@@ -218,4 +218,12 @@ class ISBN_Test < Minitest::Test
     expected = {"id" => id.to_s, "username" => name, "passhash" => pass}
     assert_equal(expected, actual)
   end
+
+  def test_check_user_password_on_login
+    username = "admin"
+    password = "admin"
+    actual = verify_login_information(username, password)
+
+    assert_equal(true, actual)
+  end
 end
