@@ -4,13 +4,13 @@ require 'csv'
 require 'pg'
 require 'bcrypt'
 require_relative 'isbn.rb'
-require_relative 'aws.rb'
+# require_relative 'aws.rb'
 require_relative 'psql.rb'
 enable :sessions
 
 # Ensures current file is up-to-date.
-checked = "checked_numbers.csv"
-pull_csv_from_s3_into_local(checked, checked)
+# checked = "checked_numbers.csv"
+# pull_csv_from_s3_into_local(checked, checked)
 
 get '/' do
   session[:error] = ""
