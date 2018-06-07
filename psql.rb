@@ -1,5 +1,7 @@
 require_relative 'bcrypt.rb'
+require 'uri'
 
+load './local_env.rb' if File.exist?('./local_env.rb')
 def read_last_isbn_in_database
   con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
 
