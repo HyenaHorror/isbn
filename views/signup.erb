@@ -2,12 +2,14 @@
     <%=session[:error]%>
   </div>
   <form action="/signup_submit" method="post">
+    <label for="name">Your Name</label>
+    <div><input type="text" name="name" size="24" required></div>
     <label for="name">Username</label>
-    <div><input type="text" size="24" name="username" pattern="[a-zA-Z0-9_]{3,}" title="Only letters, numbers, and underscores. Minimum 3 characters" requred><span class="red">*</span></div>
+    <div><input type="text" size="24" name="username" pattern="[a-zA-Z0-9_]{3,}" title="Only letters, numbers, and underscores. Minimum 3 characters" requred></div>
     <!-- <label for="email">Email</label>
-    <div><input type="email" size="24" name="ema`il" requred><span class="red">*</span></div> -->
+    <div><input type="email" size="24" name="ema`il" requred></div> -->
     <label for="password">Password</label>
-    <div><input type="password" size="24" placeholder="At least 8 characters" name="password" minlength="8" title="8 characters minimum" requred><span class="red">*</span></div>
+    <div><input type="password" size="24" placeholder="At least 8 characters" name="password" minlength="8" title="8 characters minimum" requred></div>
     <!-- <p>
       <label for="gender">Gender</label><br>
       <label for="male">Male</label>
@@ -23,7 +25,8 @@
       <input type="number" name="day" placeholder="Day" min="1" max="31">
       <input type="number" name="year" placeholder="Year" min="1900" max="2018">
     </p> -->
-    <p class="red">* Required</p>
+    <!-- <p class="red">* Required</p> -->
+    <br>
     <input class="button" type="submit" value="Sign up">
     <!-- <input type="reset"> -->
   </form>
