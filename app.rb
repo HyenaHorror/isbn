@@ -55,8 +55,8 @@ post '/signup_submit' do
     session[:error] = 'Username is already in use!'
     redirect '/signup'
   else
-    create_new_user(params[:username], params[:password])
-    session[:user] = params[:username].downcase
+    create_new_user(params[:username].downcase, params[:password])
+    session[:name] = params[:username].downcase
     redirect '/check_if_valid'
   end
 end
@@ -71,6 +71,7 @@ post '/check_input' do
   session[:status] = process_isbn(params[:isbn_value])
   # checked = "checked_numbers.csv"
   puts "session[:value] is #{session[:value]}"
+  puts "session[:name]: #{session[:name]}"
   # csv_add_isbn(checked, session[:value], session[:status], session[:name])
   # upload_new_file_to_bucket(checked)
   add_isbn_to_history(session[:value].to_s, session[:status], session[:name])
