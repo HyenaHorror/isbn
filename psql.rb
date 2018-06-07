@@ -24,6 +24,7 @@ def create_new_user(username, password)
   uri = URI.parse(ENV['DATABASE_URL'])
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
   passhash = hash_password(password)
+  puts "New user: #{username}"
   con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{passhash}')"
 end
 def verify_login_information(username, password)
