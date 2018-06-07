@@ -40,6 +40,11 @@ post '/login_submit' do
   end
 end
 
+get '/guest' do
+  session[:name] = 'Guest'
+  redirect '/check_if_valid'
+end
+
 get '/signup' do
   erb :signup
 end
