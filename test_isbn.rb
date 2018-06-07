@@ -199,7 +199,7 @@ class ISBN_Test < Minitest::Test
   end
 
   def test_create_user_in_db
-    con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
+    con = PG.connect(:dbname => 'testdb', :user => 'tester', :password => 'password')
 
     idnum = con.exec "SELECT id FROM Users ORDER BY Id DESC LIMIT 1"
     id = idnum.to_a[0]["id"].to_i + 1
