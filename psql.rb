@@ -31,8 +31,10 @@ def verify_login_information(username, password)
   uri = URI.parse(ENV['DATABASE_URL'])
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
   rs = con.exec "SELECT passhash FROM Users WHERE username = #{'username'} LIMIT 1"
-  passhash = BCrypt::Password.new rs.to_a[0]["passhash"]
-  return passhash == password
+  db_hash = rs.to_a[0]["passhash"]
+  passhash = BCrypt::Password.new db_hash
+  # rescue BCrypt::Errors::InvalidHash
+    return db_hash == passhash
 end
 
 def is_username_in_use(username)
