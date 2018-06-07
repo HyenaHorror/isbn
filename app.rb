@@ -36,7 +36,7 @@ post '/login_submit' do
     redirect '/check_if_valid'
   else
     session[:error] = "Invalid username/password!"
-    redirect 'login'
+    redirect '/login'
   end
 end
 
