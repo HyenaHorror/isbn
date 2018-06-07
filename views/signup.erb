@@ -3,11 +3,11 @@
   </div>
   <form action="/signup_submit" method="post">
     <label for="name">Username</label>
-    <div><input type="text" size="24" name="username" pattern="(/[^0-9a-zA-Z]/)" requred><span class="red">*</span></div>
+    <div><input type="text" size="24" name="username" pattern="[a-zA-Z0-9_]{3,16}" title="Only letters, numbers, and underscores. Minimum 3 characters" requred><span class="red">*</span></div>
     <!-- <label for="email">Email</label>
-    <div><input type="email" size="24" name="email" requred><span class="red">*</span></div> -->
+    <div><input type="email" size="24" name="ema`il" requred><span class="red">*</span></div> -->
     <label for="password">Password</label>
-    <div><input type="password" size="24" placeholder="At least 8 characters" name="password" pattern=".{8,32}" title="8 to 32 characters" requred><span class="red">*</span></div>
+    <div><input type="password" size="24" placeholder="At least 8 characters" name="password" minlength="8" title="8 characters minimum" requred><span class="red">*</span></div>
     <!-- <p>
       <label for="gender">Gender</label><br>
       <label for="male">Male</label>
