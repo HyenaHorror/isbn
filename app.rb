@@ -33,6 +33,7 @@ end
 post '/login_submit' do
   if verify_login_information(params[:username].downcase, params[:password]) == true
     session[:name] = params[:username].downcase
+    session[:error] = ""
     redirect '/check_if_valid'
   else
     session[:error] = "Invalid username/password!"
