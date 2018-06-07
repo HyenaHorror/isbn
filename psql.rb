@@ -25,17 +25,19 @@ def create_new_user(username, password)
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
   passhash = hash_password(password)
   puts "New user: #{username}"
-  con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{passhash}')"
+  con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{passhash.to_s}')"
 end
 def verify_login_information(username, password)
   # con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
   uri = URI.parse(ENV['DATABASE_URL'])
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
-  rs = con.exec "SELECT passhash FROM Users WHERE username = #{'username'} LIMIT 1"
+  rs = con.exec "SELECT passhash FROM Users WHERE username = '#{username}' LIMIT 1"
   db_hash = rs.to_a[0]["passhash"]
-  passhash = BCrypt::Password.new db_hash
-  # rescue BCrypt::Errors::InvalidHash
-    return db_hash == passhash
+  passhash = BCrypt::Password.new(db_hash)
+  puts "rs: #{rs.to_a[0]}"
+
+  return passhash == password
+rescue BCrypt::Errors::InvalidHash
 end
 
 def is_username_in_use(username)
