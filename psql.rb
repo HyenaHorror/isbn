@@ -37,7 +37,9 @@ def verify_login_information(username, password)
   puts "rs: #{rs.to_a[0]}"
 
   return passhash == password
-rescue BCrypt::Errors::InvalidHash
+# rescue BCrypt::Errors::InvalidHash
+rescue NoMethodError # in case user is not valid
+  return false
 end
 
 def is_username_in_use(username)
