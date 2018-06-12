@@ -1,14 +1,3 @@
-def temp_userpass(username, password)
-  #This function is a placeholder. Will be replaced later with account creation.
-  if username.downcase == "admin" && password == "admin"
-    true
-  elsif username.downcase == "nsf" && password == "smashthestate"
-    true
-  else
-    false
-  end
-end
-
 def process_isbn(value)
   isbn = remove_extra_characters(value)
   if isbn.length == 10
