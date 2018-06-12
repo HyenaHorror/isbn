@@ -16,7 +16,7 @@
       </td>
       <td>
         <!-- <%=hash[:user]%> -->
-        <%=hash["username"]%>
+        <%=hash["username"].gsub("''", "'")%>
       </td>
     </tr>
   <% end %>

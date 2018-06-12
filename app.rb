@@ -56,8 +56,8 @@ post '/signup_submit' do
     session[:error] = 'Username is already in use!'
     redirect '/signup'
   else
-    create_new_user(params[:username].downcase, params[:password])
-    session[:name] = params[:username].downcase
+    create_new_user(params[:username].downcase, params[:name], params[:password])
+    session[:name] = params[:name]
     redirect '/check_if_valid'
   end
 end

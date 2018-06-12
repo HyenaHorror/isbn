@@ -16,7 +16,7 @@ def add_isbn_to_history(isbn, status, user)
   uri = URI.parse(ENV['DATABASE_URL'])
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 
-  con.exec "INSERT INTO History VALUES(DEFAULT, '#{isbn}', '#{status}', '#{user}')"
+  con.exec "INSERT INTO History VALUES(DEFAULT, '#{isbn}', '#{status}', '#{user.gsub("'", "''")}')"
 end
 
 def create_new_user(username, name, password)
@@ -24,8 +24,7 @@ def create_new_user(username, name, password)
   uri = URI.parse(ENV['DATABASE_URL'])
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
   passhash = hash_password(password)
-  puts "New user: #{username}"
-  con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{name}', '#{passhash.to_s}')"
+  con.exec "INSERT INTO Users VALUES(DEFAULT, '#{username}', '#{name.gsub("'", "''")}', '#{passhash.to_s}')"
 end
 def verify_login_information(username, password)
   # con = PG.connect(:dbname => ENV['DBNAME'], :user => ENV['DBUSER'], :password => ENV['DBPASS'])
@@ -63,5 +62,5 @@ def get_login_users_name(username)
   con = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 
   rs = con.exec "SELECT Name FROM Users WHERE Username = '#{username}' LIMIT 1"
-  return rs.to_a[0]["name"]
+  return rs.to_a[0]["name"].gsub("''", "'")
 end
