@@ -68,7 +68,8 @@ end
 
 post '/check_input' do
   session[:value] = params[:isbn_value]
-  session[:type] = params[:isbn_value].length == 10 ||  params[:isbn_value].length == 13 ? "isbn#{params[:isbn_value].length}" : "invalid"
+  type_length = remove_extra_characters(params[:isbn_value]).length
+  session[:type] = type_length == 10 ||  type_length == 13 ? "isbn#{type_length}" : "invalid"
   session[:status] = process_isbn(params[:isbn_value])
   # checked = "checked_numbers.csv"
   puts "session[:value] is #{session[:value]}"
