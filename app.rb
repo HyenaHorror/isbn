@@ -90,7 +90,7 @@ get '/history' do
   erb :history, locals:{checked_numbers:checked_numbers}
 end
 
-get '/contact' do
+get '/staff' do
   erb :contact
 end
 
