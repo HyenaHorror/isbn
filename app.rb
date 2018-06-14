@@ -91,7 +91,7 @@ get '/history' do
 end
 
 get '/staff' do
-  erb :contact
+  erb :staff
 end
 
 get '/about' do
